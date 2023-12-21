@@ -1,8 +1,12 @@
+import Banner from "../Banner/Banner";
+import Users from "../Feature/Users";
+
 
 const Home = () => {
     return (
         <div>
-            I am Home
+            <Banner></Banner>
+            <Users></Users>
         </div>
     );
 };
