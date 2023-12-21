@@ -4,6 +4,11 @@ import Home from "../Home/Home/Home";
 import ErrorPage from "../Pages/ErrorPage";
 import Login from "../Login/Login";
 import Register from "../Register/Register";
+import PrivateRoute from "./PrivateRoute";
+import Dashboard from "../Layout/Dashboard";
+import DashboardHome from "../Home/DashboardHome/DashboardHome";
+import MyProfile from "../Home/DashboardHome/MyProfile";
+import CreateTask from "../Home/DashboardHome/CreateTask";
 
 export const router = createBrowserRouter([
     {
@@ -25,4 +30,22 @@ export const router = createBrowserRouter([
             }
         ]
     },
+    {
+        path: "dashboard",
+        element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+        children: [
+            {
+                path: 'dashboard',
+                element: <PrivateRoute><DashboardHome></DashboardHome></PrivateRoute>
+            },
+            {
+                path: 'myProfile',
+                element: <PrivateRoute><MyProfile></MyProfile></PrivateRoute>
+            },
+            {
+                path: 'createTask',
+                element: <PrivateRoute><CreateTask></CreateTask></PrivateRoute>
+            }
+        ]
+    }
 ]);
