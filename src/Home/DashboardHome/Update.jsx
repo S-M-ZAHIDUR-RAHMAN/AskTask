@@ -34,7 +34,7 @@ const Update = () => {
         console.log(updatedTask);
 
         //update assignment data in the server
-        fetch(`http://localhost:5000/tasks/${update._id}`, {
+        fetch(` https://ask-task-server-9cr8rl0l7-s-m-zahidur-rahmans-projects.vercel.app/${update._id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
