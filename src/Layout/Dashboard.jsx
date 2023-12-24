@@ -1,11 +1,22 @@
+import { useEffect } from "react";
 import { FaAdn, FaBoltLightning, FaBullhorn, FaEnvelope, FaFaceSmile, FaHouse, FaList, FaPeopleGroup } from "react-icons/fa6";
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useLocation } from "react-router-dom";
 
 const Dashboard = () => {
+    const location = useLocation();
+    useEffect(()=> {
+        if(location.pathname==="/dashboard"){
+            document.title = `AskTask - Dashboard`
+        }
+        else{
+            document.title = `AskTask ${location.pathname.replace("/",'- ')}`
+        }
+        
+    },[location.pathname])
     return (
-        <div className="flex-row md:flex-row lg:flex">
+        <div className="flex-row md:flex-row lg:flex bg-black">
             {/* dashboard sidebar */}
-            <div className="min-w-screen lg:w-64 md:min-h-screen bg-slate-500">
+            <div className="min-w-screen lg:w-64 md:min-h-screen bg-yellow-500">
                 <ul className="menu md:p-4">
                     {
                         <>
@@ -34,6 +45,7 @@ const Dashboard = () => {
                     </li>
                 </ul>
             </div>
+            <hr />
             {/* dashboard content */}
             <div className="flex-1 p-8">
                 <Outlet></Outlet>

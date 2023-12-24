@@ -9,6 +9,9 @@ import Dashboard from "../Layout/Dashboard";
 import DashboardHome from "../Home/DashboardHome/DashboardHome";
 import MyProfile from "../Home/DashboardHome/MyProfile";
 import CreateTask from "../Home/DashboardHome/CreateTask";
+import Details from "../Home/DashboardHome/Details";
+import Update from "../Home/DashboardHome/Update";
+// import KanbanBoard from "../Home/DashboardHome/KanbanBoard";
 
 export const router = createBrowserRouter([
     {
@@ -43,9 +46,20 @@ export const router = createBrowserRouter([
                 element: <PrivateRoute><MyProfile></MyProfile></PrivateRoute>
             },
             {
-                path: 'createTask',
-                element: <PrivateRoute><CreateTask></CreateTask></PrivateRoute>
-            }
+                path: 'dashboard/createTask',
+                element: <PrivateRoute><CreateTask></CreateTask></PrivateRoute>,
+                loader: () => fetch('http://localhost:5000/tasks')
+            },
+            {
+                path: "dashboard/update/:id",
+                element: <PrivateRoute><Update></Update></PrivateRoute>,
+                
+            },
+            {
+                path: "dashboard/details/:id",
+                element: <PrivateRoute><Details></Details></PrivateRoute>,
+            
+            },
         ]
     }
 ]);
